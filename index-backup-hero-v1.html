@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketTrainer - Fitness SaaS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'AlibabaSans';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'AlibabaSans';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Alibaba-PuHuiTi';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/Alibaba-PuHuiTi-Bold.otf') format('opentype');
+            font-weight: 700;
+        }
+
+        :root {
+            --primary-orange: #FF6B35;
+            --dark-bg: #ffffff;
+            --text-light: #1A1A1A;
+            --text-gray: #666666;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --font-main: 'AlibabaSans', sans-serif;
+            --font-bold: 'Alibaba-PuHuiTi', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            zoom: 0.75;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-bold);
+            font-size: 28px;
+            color: #1A1A1A;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-orange);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            gap: 48px;
+        }
+
+        nav a {
+            color: #1A1A1A;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover { color: var(--primary-orange); }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after { width: 100%; }
+
+        .cta-btn {
+            background: var(--primary-orange);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+            font-family: var(--font-main);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(255, 107, 53, 0.3);
+            background: #ff7d4d;
+        }
+
+        .cta-btn:active { transform: translateY(1px); }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 0;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 700px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        h1 {
+            font-family: var(--font-bold);
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #1A1A1A;
+            -webkit-text-fill-color: #1A1A1A;
+        }
+
+        h1 span {
+            color: var(--primary-orange);
+            -webkit-text-fill-color: var(--primary-orange);
+        }
+
+        .hero-desc {
+            font-size: 20px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 50px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .secondary-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1A1A1A;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .secondary-btn i {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover i {
+            background: rgba(0,0,0,0.06);
+            border-color: #1A1A1A;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .mockup-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background: var(--glass-bg);
+            border: none;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .mockup-container:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        .mockup-img {
+            width: 100%;
+            height: 115%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Floating cards */
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-1 { top: 50px; left: -50px; animation-delay: 0s; }
+        .card-2 { bottom: 80px; right: -30px; animation-delay: 2s; }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .stat-info h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #1A1A1A;
+        }
+
+        .stat-info p {
+            font-size: 14px;
+            color: var(--text-gray);
+            white-space: nowrap;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 107, 53, 0.35) 80%, #ffffff 100%);
+        }
+
+        .features-inner {
+            max-width: 1520px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-bold);
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: left;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out backwards;
+            cursor: pointer;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.4s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,107,53,0.06) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,107,53,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-card.active {
+            border-color: var(--primary-orange);
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.12);
+        }
+
+        .feature-card.active .feature-icon {
+            background: var(--primary-orange);
+            color: #fff;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--primary-orange);
+            color: #fff;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tab Detail Panel */
+        .tab-panel {
+            display: none;
+            margin-top: 40px;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .tab-panel.active { display: flex; }
+
+        .tab-panel-content {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .tab-panel-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            width: fit-content;
+        }
+
+        .tab-panel-content h3 {
+            font-family: var(--font-bold);
+            font-size: 36px;
+            line-height: 1.2;
+        }
+
+        .tab-panel-content p {
+            font-size: 18px;
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        .tab-panel-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .tab-panel-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #1A1A1A;
+        }
+
+        .tab-panel-bullets li i {
+            color: var(--primary-orange);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .tab-panel-visual {
+            flex: 1;
+            background: rgba(255, 107, 53, 0.03);
+            border-left: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            min-height: 400px;
+        }
+
+        .tab-visual-mockup {
+            width: 100%;
+            max-width: 460px;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+
+        .tab-visual-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-visual-header span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .tab-visual-header i { color: var(--primary-orange); }
+
+        .tab-visual-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tab-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .tab-row-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tab-row-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            flex-shrink: 0;
+        }
+
+        .tab-row-dot.green { background: #4ade80; }
+        .tab-row-dot.blue  { background: #60a5fa; }
+
+        .tab-row-label { font-size: 14px; color: #1A1A1A; }
+        .tab-row-meta  { font-size: 13px; color: var(--text-gray); }
+
+        .tab-bar-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 16px 20px;
+        }
+
+        .tab-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tab-bar-label {
+            font-size: 13px;
+            color: var(--text-gray);
+            width: 90px;
+            flex-shrink: 0;
+        }
+
+        .tab-bar-track {
+            flex: 1;
+            height: 8px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .tab-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--primary-orange);
+        }
+
+        .tab-bar-val {
+            font-size: 13px;
+            color: #1A1A1A;
+            width: 36px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 60px 0 100px;
+            text-align: center;
+        }
+
+        .social-proof p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        .logos-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .logos-wrapper:hover { opacity: 1; }
+
+        .brand-logo {
+            font-family: var(--font-bold);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-bold);
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+            -webkit-text-fill-color: #1A1A1A;
+            background: none;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .cta-section .cta-btn {
+            font-size: 20px;
+            padding: 20px 48px;
+        }
+
+        .cta-note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon"><i class="ri-fire-fill"></i></div>
+                PocketTrainer
+            </div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#insights">Insights</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+            <button class="cta-btn">Join Waitlist</button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">🔥 The Future of Fitness Management</div>
+                <h1>Empower Your <span>Coaching</span> Business</h1>
+                <p class="hero-desc">All-in-one platform for personal trainers to manage clients, create workout plans, track progress, and grow their fitness business.</p>
+                <div class="hero-actions">
+                    <button class="cta-btn">Start Free Trial</button>
+                    <a href="#" class="secondary-btn">
+                        <i><i class="ri-play-fill"></i></i>
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="mockup-container">
+                    <video class="mockup-img" autoplay loop muted playsinline>
+                        <source src="Animated UI Mockup Animation.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="floating-card card-1">
+                    <div class="stat-icon"><i class="ri-user-star-line"></i></div>
+                    <div class="stat-info">
+                        <h4>2,500+</h4>
+                        <p>Active Clients</p>
+                    </div>
+                </div>
+
+                <div class="floating-card card-2">
+                    <div class="stat-icon"><i class="ri-line-chart-line"></i></div>
+                    <div class="stat-info">
+                        <h4>85%</h4>
+                        <p>Retention Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- end .container -->
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="features-inner">
+            <div class="section-header">
+                <h2>Everything you need to scale</h2>
+                <p>Powerful tools designed specifically for modern fitness professionals to streamline operations and deliver better results.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-tab="scheduling">
+                    <div class="feature-icon"><i class="ri-calendar-check-line"></i></div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Automate your bookings, manage availability, and reduce no-shows with integrated calendar and reminder systems.</p>
+                </div>
+
+                <div class="feature-card" data-tab="workout">
+                    <div class="feature-icon"><i class="ri-file-list-3-line"></i></div>
+                    <h3>Workout Builder</h3>
+                    <p>Create customized training programs quickly with our extensive exercise library and drag-and-drop builder.</p>
+                </div>
+
+                <div class="feature-card" data-tab="tracking">
+                    <div class="feature-icon"><i class="ri-pie-chart-2-line"></i></div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor client achievements with detailed analytics, body metrics tracking, and performance visualizations.</p>
+                </div>
+            </div>
+
+            <!-- Tab Panels -->
+            <div class="tab-panel" id="tab-scheduling">
+                <div class="tab-panel-content">
+                    <div class="tab-panel-tag"><i class="ri-calendar-check-line"></i> Smart Scheduling</div>
+                    <h3>Never miss a session — or lose a client</h3>
+                    <p>Your calendar works for you. Clients book directly, reminders go out automatically, and cancellations get filled without you lifting a finger.</p>
+                    <ul class="tab-panel-bullets">
+                        <li><i class="ri-check-line"></i> Client self-booking with real-time availability</li>
+                        <li><i class="ri-check-line"></i> Automated SMS & email reminders</li>
+                        <li><i class="ri-check-line"></i> Waitlist management for cancelled slots</li>
+                        <li><i class="ri-check-line"></i> Sync with Google Calendar & iCal</li>
+                    </ul>
+                </div>
+                <div class="tab-panel-visual">
+                    <div class="tab-visual-mockup">
+                        <div class="tab-visual-header">
+                            <i class="ri-calendar-line"></i>
+                            <span>Upcoming Sessions</span>
+                        </div>
+                        <div class="tab-visual-body">
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot"></div><span class="tab-row-label">Sarah M. — Upper Body</span></div>
+                                <span class="tab-row-meta">9:00 AM</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot green"></div><span class="tab-row-label">James K. — HIIT</span></div>
+                                <span class="tab-row-meta">10:30 AM</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot blue"></div><span class="tab-row-label">Priya L. — Mobility</span></div>
+                                <span class="tab-row-meta">12:00 PM</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot"></div><span class="tab-row-label">Tom R. — Strength</span></div>
+                                <span class="tab-row-meta">2:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="tab-workout">
+                <div class="tab-panel-content">
+                    <div class="tab-panel-tag"><i class="ri-file-list-3-line"></i> Workout Builder</div>
+                    <h3>Build programs in minutes, not hours</h3>
+                    <p>Choose from 500+ exercises, drag and drop into blocks, and send a fully formatted program to your client in one click.</p>
+                    <ul class="tab-panel-bullets">
+                        <li><i class="ri-check-line"></i> 500+ exercise library with video demos</li>
+                        <li><i class="ri-check-line"></i> Drag-and-drop block builder</li>
+                        <li><i class="ri-check-line"></i> Save & reuse templates across clients</li>
+                        <li><i class="ri-check-line"></i> One-click delivery to client app</li>
+                    </ul>
+                </div>
+                <div class="tab-panel-visual">
+                    <div class="tab-visual-mockup">
+                        <div class="tab-visual-header">
+                            <i class="ri-file-list-3-line"></i>
+                            <span>Week 1 — Push Day</span>
+                        </div>
+                        <div class="tab-visual-body">
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot"></div><span class="tab-row-label">Bench Press</span></div>
+                                <span class="tab-row-meta">4 × 8 @ 75%</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot green"></div><span class="tab-row-label">Overhead Press</span></div>
+                                <span class="tab-row-meta">3 × 10</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot blue"></div><span class="tab-row-label">Lateral Raises</span></div>
+                                <span class="tab-row-meta">3 × 15</span>
+                            </div>
+                            <div class="tab-row">
+                                <div class="tab-row-left"><div class="tab-row-dot"></div><span class="tab-row-label">Tricep Pushdown</span></div>
+                                <span class="tab-row-meta">3 × 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="tab-tracking">
+                <div class="tab-panel-content">
+                    <div class="tab-panel-tag"><i class="ri-pie-chart-2-line"></i> Progress Tracking</div>
+                    <h3>Data that keeps clients motivated</h3>
+                    <p>Track body metrics, strength gains, and consistency scores over time. Clients see their progress visually — and trainers spot issues before they become drop-offs.</p>
+                    <ul class="tab-panel-bullets">
+                        <li><i class="ri-check-line"></i> Body measurements & weight trends</li>
+                        <li><i class="ri-check-line"></i> Strength & rep max progression</li>
+                        <li><i class="ri-check-line"></i> Session attendance & consistency score</li>
+                        <li><i class="ri-check-line"></i> Shareable progress reports for clients</li>
+                    </ul>
+                </div>
+                <div class="tab-panel-visual">
+                    <div class="tab-visual-mockup">
+                        <div class="tab-visual-header">
+                            <i class="ri-bar-chart-line"></i>
+                            <span>Client Progress — Sarah M.</span>
+                        </div>
+                        <div class="tab-bar-wrap">
+                            <div class="tab-bar-row">
+                                <span class="tab-bar-label">Consistency</span>
+                                <div class="tab-bar-track"><div class="tab-bar-fill" style="width:88%"></div></div>
+                                <span class="tab-bar-val">88%</span>
+                            </div>
+                            <div class="tab-bar-row">
+                                <span class="tab-bar-label">Strength</span>
+                                <div class="tab-bar-track"><div class="tab-bar-fill" style="width:72%"></div></div>
+                                <span class="tab-bar-val">+72%</span>
+                            </div>
+                            <div class="tab-bar-row">
+                                <span class="tab-bar-label">Weight goal</span>
+                                <div class="tab-bar-track"><div class="tab-bar-fill" style="width:60%"></div></div>
+                                <span class="tab-bar-val">60%</span>
+                            </div>
+                            <div class="tab-bar-row">
+                                <span class="tab-bar-label">Mobility</span>
+                                <div class="tab-bar-track"><div class="tab-bar-fill" style="width:95%"></div></div>
+                                <span class="tab-bar-val">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      </div><!-- end .features-inner -->
+    </section>
+
+    <div class="container">
+        <!-- Social Proof -->
+        <section class="social-proof">
+            <p>Trusted by elite trainers worldwide</p>
+            <div class="logos-wrapper">
+                <div class="brand-logo"><i class="ri-shield-cross-fill"></i> FitPro</div>
+                <div class="brand-logo"><i class="ri-heart-pulse-fill"></i> PulseHealth</div>
+                <div class="brand-logo"><i class="ri-run-line"></i> ActiveLife</div>
+                <div class="brand-logo"><i class="ri-medal-fill"></i> EliteGym</div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to transform your business?</h2>
+            <p>Join thousands of successful trainers using PocketTrainer.</p>
+            <button class="cta-btn">Get Started for Free</button>
+            <p class="cta-note">No credit card required. 14-day free trial.</p>
+        </section>
+
+    </div>
+
+    <script>
+        // Feature tab switching
+        const featureCards = document.querySelectorAll('.feature-card[data-tab]');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        // Activate first tab by default
+        featureCards[0].classList.add('active');
+        document.getElementById('tab-' + featureCards[0].dataset.tab).classList.add('active');
+
+        featureCards.forEach(card => {
+            card.addEventListener('click', function () {
+                const tab = this.dataset.tab;
+                const isAlreadyActive = this.classList.contains('active');
+
+                featureCards.forEach(c => c.classList.remove('active'));
+                tabPanels.forEach(p => p.classList.remove('active'));
+
+                if (!isAlreadyActive) {
+                    this.classList.add('active');
+                    document.getElementById('tab-' + tab).classList.add('active');
+                    document.getElementById('tab-' + tab).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+        });
+
+        // Button click feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                let originalText = this.innerText;
+                this.innerText = 'Processing...';
+                this.style.opacity = '0.8';
+                setTimeout(() => {
+                    this.innerText = originalText;
+                    this.style.opacity = '1';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
