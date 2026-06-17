@@ -2081,7 +2081,9 @@
             .badge { font-size: 13px; }
             .hero-bullets { align-items: flex-start; text-align: left; }
             .hero-actions { justify-content: center; }
+            .hero-content { order: 2; }
             .hero-visual {
+                order: 1;
                 width: 100%;
                 justify-content: center;
                 overflow: hidden;
@@ -2091,6 +2093,12 @@
                 transform-origin: top center;
                 margin-bottom: -120px;
             }
+
+            /* Feature cards smaller on mobile */
+            .feature-card { padding: 20px; }
+            .feature-card h3 { font-size: 18px; }
+            .feature-card p { font-size: 14px; }
+            .feature-icon { width: 48px; height: 48px; font-size: 22px; margin-bottom: 16px; }
 
             /* Features */
             .features { padding: 60px 20px; }
