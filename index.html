@@ -2054,6 +2054,74 @@
             50%  { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+
+            /* Remove desktop zoom on mobile */
+            body { zoom: 1; }
+
+            .container { padding: 0 20px; }
+
+            /* Header */
+            header { padding: 20px 0; }
+            .logo { font-size: 22px; }
+            .cta-btn { padding: 12px 22px; font-size: 14px; }
+
+            /* Hero */
+            .hero {
+                flex-direction: column;
+                padding: 40px 0 48px;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-content { max-width: 100%; }
+            h1 { font-size: 40px; }
+            .hero-desc { font-size: 16px; }
+            .badge { font-size: 13px; }
+            .hero-bullets { align-items: flex-start; text-align: left; }
+            .hero-actions { justify-content: center; }
+            .hero-visual { display: none; }
+
+            /* Features */
+            .features { padding: 60px 20px; }
+            .features-grid { grid-template-columns: 1fr; gap: 20px; }
+            .section-header h2 { font-size: 32px; }
+            .section-header p { font-size: 16px; }
+            .feature-card { padding: 28px; }
+
+            /* Tab panel */
+            .tab-panel.active { flex-direction: column; }
+            .tab-panel-content { padding: 32px 24px; }
+            .tab-panel-content h3 { font-size: 24px; }
+            .tab-panel-content p { font-size: 15px; }
+            .tab-panel-visual { border-left: none; border-top: 1px solid var(--glass-border); }
+            .tab-capability-grid { grid-template-columns: 1fr; }
+
+            /* Testimonials */
+            .testimonials { padding: 48px 0 60px; }
+            .testimonials h2 { font-size: 26px; margin-bottom: 32px; }
+            .testimonials-slide { grid-template-columns: 1fr; }
+
+            /* CTA */
+            .cta-section { padding: 60px 20px; }
+            .cta-section h2 { font-size: 28px; }
+            .cta-section p { font-size: 16px; }
+            .cta-section .cta-btn { font-size: 16px; padding: 16px 32px; }
+
+            /* Form */
+            #early-access-form-wrap { padding: 28px 20px; margin: 32px 0 0; }
+            .eaf-question { font-size: 17px; }
+
+            /* Hide decorative glow on mobile */
+            .ambient-glow { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 34px; }
+            .cta-section h2 { font-size: 24px; }
+            .tab-panel-content h3 { font-size: 22px; }
+        }
     </style>
 
     <!-- Google Analytics -->
