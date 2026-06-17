@@ -2081,7 +2081,16 @@
             .badge { font-size: 13px; }
             .hero-bullets { align-items: flex-start; text-align: left; }
             .hero-actions { justify-content: center; }
-            .hero-visual { display: none; }
+            .hero-visual {
+                width: 100%;
+                justify-content: center;
+                overflow: hidden;
+            }
+            .devices-wrapper {
+                transform: scale(0.72);
+                transform-origin: top center;
+                margin-bottom: -120px;
+            }
 
             /* Features */
             .features { padding: 60px 20px; }
@@ -2970,6 +2979,13 @@
             card.addEventListener('click', function () {
                 if (this.classList.contains('active')) return;
                 showTab(this.dataset.tab, true);
+                // On mobile, scroll to the panel after it opens
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        const panel = document.getElementById('tab-' + this.dataset.tab);
+                        if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 200);
+                }
             });
         });
 
