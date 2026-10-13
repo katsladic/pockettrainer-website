@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy – PocketTrainer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2636P3JMW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-2636P3JMW8');
+    </script>
+    <style>
+        @font-face {
+            font-family: 'AlibabaSans';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'AlibabaSans';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Alibaba-PuHuiTi';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/Alibaba-PuHuiTi-Bold.otf') format('opentype');
+            font-weight: 700;
+        }
+
+        :root {
+            --primary-orange: #FF6B35;
+            --font-main: 'AlibabaSans', sans-serif;
+            --font-bold: 'Alibaba-PuHuiTi', sans-serif;
+            --text-dark: #1A1A1A;
+            --text-gray: #555;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #fff;
+            color: var(--text-dark);
+            font-family: var(--font-main);
+            zoom: 0.75;
+            overflow-x: hidden;
+        }
+
+        /* ── Header ── */
+        header {
+            background: #1A1A1A;
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-bold);
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-orange);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .cta-btn {
+            background: var(--primary-orange);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-family: var(--font-main);
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255,107,53,0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(255,107,53,0.3);
+            background: #ff7d4d;
+        }
+
+        /* ── Page content ── */
+        .page-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 72px 40px 100px;
+        }
+
+        .page-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: var(--font-bold);
+            font-size: 52px;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .effective-date {
+            font-size: 15px;
+            color: #999;
+            margin-bottom: 56px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-family: var(--font-bold);
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-gray);
+            margin-bottom: 14px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0 0 14px 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        ul li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-gray);
+            padding-left: 22px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: 700;
+        }
+
+        /* ── Tables ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        thead tr {
+            background: #f7f7f7;
+        }
+
+        thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-family: var(--font-bold);
+            font-size: 13px;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody td {
+            padding: 14px 18px;
+            vertical-align: top;
+            color: var(--text-gray);
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tbody td:first-child {
+            font-weight: 500;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        /* ── Callout box ── */
+        .callout {
+            background: rgba(255,107,53,0.06);
+            border-left: 3px solid var(--primary-orange);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer {
+            background: #1A1A1A;
+            color: #aaa;
+            text-align: center;
+            padding: 32px 40px;
+            font-size: 14px;
+        }
+
+        footer a { color: #aaa; }
+        footer a:hover { color: #fff; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 36px; }
+            .page-wrap { padding: 48px 24px 72px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="logo" href="/">
+            <div class="logo-icon"><i class="ri-fire-fill"></i></div>
+            PocketTrainer
+        </a>
+        <a class="cta-btn" href="/">Join Waitlist</a>
+    </header>
+
+    <div class="page-wrap">
+
+        <div class="page-label">Legal</div>
+        <h1>Privacy Policy</h1>
+        <p class="effective-date">Effective date: October 13, 2026</p>
+
+        <div class="section">
+            <h2>About this policy</h2>
+            <p>This policy explains what personal information the Pocket Trainer mobile app collects, why, and how you can control it.</p>
+            <ul>
+                <li><strong>Applies to:</strong> the Pocket Trainer iOS and Android apps and the accounts used to sign in to them.</li>
+                <li><strong>Contact:</strong> <a href="mailto:pockettrainerhq@gmail.com">pockettrainerhq@gmail.com</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Information we collect</h2>
+            <p>We collect only what you enter or upload in the app. We do not use analytics, advertising or crash-reporting tools.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>What it includes</th>
+                            <th>Required?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Account</td>
+                            <td>Email address, password (stored hashed, never readable by us), name</td>
+                            <td>Email and password to create an account</td>
+                        </tr>
+                        <tr>
+                            <td>Profile</td>
+                            <td>Date of birth, height, weight, fitness level, goals, gender, location, time zone, phone number, profile photo</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>Preferences</td>
+                            <td>Weight unit (lbs/kg) and distance unit (miles/km)</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>Workouts</td>
+                            <td>Workouts you create, custom exercises, scheduled activities, workout sessions, sets, reps, weights, durations and notes</td>
+                            <td>Created as you use the app</td>
+                        </tr>
+                        <tr>
+                            <td>Cardio and progress</td>
+                            <td>Cardio sessions (distance, pace, time, calories, heart rate you enter), body measurements, progress metrics, goals, personal records</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>Photos and videos</td>
+                            <td>Progress photos, profile photo, and videos you attach to custom exercises</td>
+                            <td>Optional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Stored only on your device: your sign-in session (so you stay logged in), a small cache of your personal bests, and workout reminder notifications, which are scheduled locally by your phone.</p>
+            <p>Device permissions: the app asks for camera and photo library access only when you choose to take or attach a photo or video. You can change these in your device settings at any time.</p>
+        </div>
+
+        <div class="section">
+            <h2>How we use your information</h2>
+            <p>We use your information only to run the app for you:</p>
+            <ul>
+                <li>Create and secure your account, and keep you signed in.</li>
+                <li>Show, save and sync your workouts, schedule, workout history, progress and goals.</li>
+                <li>Calculate things like personal records, last weight used and workout totals.</li>
+                <li>Display weights and distances in the units you chose.</li>
+                <li>Send account emails you ask for, such as password reset links.</li>
+                <li>Remind you of scheduled workouts (reminders are created on your device).</li>
+                <li>Respond to your support requests.</li>
+            </ul>
+            <p>We rely on your consent and on the need to provide the service you signed up for. We do not make automated decisions about you that have legal or similar effects.</p>
+        </div>
+
+        <div class="section">
+            <h2>Where your data is stored and who processes it</h2>
+            <p>Your data is stored in our own database (PocketBase) hosted on Google Cloud in the United States (US Central region, Iowa). These service providers process it only on our behalf:</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Purpose</th>
+                            <th>Data involved</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Google Cloud</td>
+                            <td>Hosts our servers and database</td>
+                            <td>All account, fitness, photo and video data</td>
+                        </tr>
+                        <tr>
+                            <td>Cloudflare</td>
+                            <td>Secures and routes traffic between the app and our servers</td>
+                            <td>Data in transit, IP address</td>
+                        </tr>
+                        <tr>
+                            <td>Email provider</td>
+                            <td>Sends password reset and account emails</td>
+                            <td>Email address</td>
+                        </tr>
+                        <tr>
+                            <td>Apple / Google</td>
+                            <td>Distribute the app through their app stores</td>
+                            <td>Governed by their own privacy policies</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Workout reminders are scheduled on your phone, not through a push notification service. We do not share your information with anyone else unless required by law.</p>
+        </div>
+
+        <div class="section">
+            <h2>We never sell your data or use it for advertising</h2>
+            <ul>
+                <li>We do not sell, rent or trade your personal information.</li>
+                <li>We do not use your fitness, health or body information for advertising, marketing or profiling.</li>
+                <li>We do not share your information with data brokers or advertisers.</li>
+                <li>Your custom exercises, photos and videos are private to your account.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>How long we keep your data, and how to delete it</h2>
+            <p>We keep your information for as long as your account exists. You can delete individual items (workouts, activities, custom exercises, photos) at any time in the app.</p>
+            <div class="callout">
+                <p><strong>Delete your account:</strong> go to Profile → Settings → Delete Account. This immediately and permanently deletes your account and all associated data, including workouts, workout history, schedule, progress records, photos, videos and custom exercises. It also removes workout reminders from your device.</p>
+            </div>
+            <p>Copies may remain in encrypted server backups for up to 30 days before they are overwritten. You can also email <a href="mailto:pockettrainerhq@gmail.com">pockettrainerhq@gmail.com</a> to request deletion.</p>
+        </div>
+
+        <div class="section">
+            <h2>Your privacy rights</h2>
+            <p>You can, at any time:</p>
+            <ul>
+                <li>Access and correct your information directly in the app, or ask us for a copy of it.</li>
+                <li>Delete your account and data in the app, or by emailing us.</li>
+                <li>Withdraw consent by deleting optional information or your account.</li>
+                <li>Complain to a privacy regulator.</li>
+            </ul>
+            <p>Depending on where you live, privacy laws give you these rights. In Canada this is PIPEDA (Office of the Privacy Commissioner of Canada). If you are in the EU/UK, GDPR also gives you rights to data portability, restriction and objection. If you are in California, the CCPA gives you the right to know and delete; we do not sell or share personal information as defined by the CCPA.</p>
+            <p>To make a request, email <a href="mailto:pockettrainerhq@gmail.com">pockettrainerhq@gmail.com</a>. We respond within 30 days and may need to verify your identity.</p>
+        </div>
+
+        <div class="section">
+            <h2>Children</h2>
+            <p>Pocket Trainer is not intended for children under 13 (16 in the EU/UK). We do not knowingly collect information from them. If you believe a child has created an account, email <a href="mailto:pockettrainerhq@gmail.com">pockettrainerhq@gmail.com</a> and we will delete it.</p>
+        </div>
+
+        <div class="section">
+            <h2>Security</h2>
+            <p>We protect your information with encryption in transit (HTTPS), hashed passwords, and access rules that let each user see and change only their own data. No system is perfectly secure; if a breach affects your information, we will notify you and the regulator as the law requires.</p>
+        </div>
+
+        <div class="section">
+            <h2>International transfers</h2>
+            <p>Our providers may process data outside your province or country, including in the United States. When that happens, your data is protected by contracts and the safeguards described in this policy.</p>
+        </div>
+
+        <div class="section">
+            <h2>Changes to this policy</h2>
+            <p>We will post any changes here with a new effective date. For significant changes, we will notify you in the app or by email before they take effect.</p>
+        </div>
+
+        <div class="section">
+            <h2>Contact us</h2>
+            <p><a href="mailto:pockettrainerhq@gmail.com">pockettrainerhq@gmail.com</a></p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 PocketTrainer. &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>
